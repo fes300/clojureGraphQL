@@ -3,11 +3,12 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha14"]
                  [clj-http "2.0.0"]
                  [compojure "1.5.1"]
                  [cheshire "5.7.1"]
-                 [hiccup "1.0.0"]]
+                 [hiccup "1.0.0"]
+                 [com.walmartlabs/lacinia "0.17.0" :exclusions [clojure-future-spec]]]
   :plugins [[lein-ring "0.12.0"]
             [lein-exec "0.3.6"]]
   :ring {:handler scratch.core/app}

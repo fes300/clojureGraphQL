@@ -3,7 +3,8 @@
   (:use compojure.core
         [hiccup.middleware :only (wrap-base-url)]
         [hiccup core page])
-  (:require [compojure.route :as route]
+  (:require [scratch.utils :as utils]
+            [compojure.route :as route]
             [compojure.handler :as handler]
             [compojure.response :as response]
             [clj-http.client :as client]
@@ -40,7 +41,7 @@
 (defn user [id]
   "returns the user with the specified id"
   (if
-    (integer? (read-string id))
+    (utils/numeric? id)
     (get users (read-string id))
     "id must be a number"))
 
