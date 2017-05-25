@@ -8,3 +8,5 @@
           s (if (= (first s) \.) (next s) s)
           s (drop-while #(Character/isDigit %) s)]
       (empty? s))))
+
+(defn uuid [] (string/replace (str (java.util.UUID/randomUUID)) #"-" ""))

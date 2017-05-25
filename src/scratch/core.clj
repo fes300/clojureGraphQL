@@ -20,10 +20,9 @@
   [url]
   (client/get url {:as :json}))
 
-
-(println
-  (:body
-    (getCall  "http://jsonplaceholder.typicode.com/posts/1")))
+(->> (:body
+       (getCall "http://private-339a33-user176.apiary-mock.com/users"))
+     (def users))
 
 (defn index-page []
   (html5
@@ -33,16 +32,11 @@
     [:body
       [:h1 "Hello World"]]))
 
-(def users
-  [(generate-string {:foo "bar" :baz 5})])
-
-
-;[TO-FIX] se il primo catrattere è un numero si rompe
 (defn user [id]
   "returns the user with the specified id"
   (if
     (utils/numeric? id)
-    (get users (read-string id))
+    (str (nth users (read-string id)))
     "id must be a number"))
 
 (defroutes main-routes
