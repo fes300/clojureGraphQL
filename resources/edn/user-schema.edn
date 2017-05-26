@@ -1,0 +1,23 @@
+{:objects {
+           :User {:description "all infos about the user of the platform"
+                  :fields {:username {:type (non-null String)
+                                      :description "unique identifier because there will be public searchable users"}
+                           :trips {:type List}
+                           :friends {:type List}
+                           :created {:type Int
+                                     :description "Unix epoch seconds when user was added to database"}}}}
+
+ :queries {:user {:type :User
+                  :description "Retrieve a single user by its id"
+                  :args {:id {:type (non-null Number)
+                              :description "Unique id for user."}}
+                   :resolve :resolve-user}
+           :users {:type (list :User)
+                   :description "Retrieve all the users of the platform"
+                   :resolve :resolve-users}}
+
+ :mutations {:user {:type :User
+                    :description "Create a new User"
+                    :args {:username {:type (non-null String)
+                                      :description "Unique name for game."}}
+                    :resolve :resolve-create-user!}}}
