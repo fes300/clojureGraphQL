@@ -1,8 +1,8 @@
-(ns leaderboard-api.handler
+(ns scratch.handler
   (:require [clojure.data.json :as json]
             [clojure.string :as string]
             [com.walmartlabs.lacinia :refer [execute]]
-            [leaderboard-api.schema :refer [leaderboard-schema]]
+            [scratch.schema :refer [user-schema]]
             [ring.middleware.cors :refer [wrap-cors]]
             [ring.middleware.params :refer [wrap-params]]
             [ring.util.request :refer [body-string]]))
@@ -87,7 +87,7 @@
   (let [uri (:uri request)]
     (if (= uri "/graphql")
       ;; hits the proper uri, process request
-      ((graphql-handler (leaderboard-schema)) request)
+      ((graphql-handler (user-schema)) request)
       ;; not serving any other requests
       {:status 404
        :headers {"Content-Type" "text/html"}
