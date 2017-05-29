@@ -1,8 +1,8 @@
 {:objects {
            :Friend {:fields {:username {:type String}}}
-           :Trip {:fields {:location {:type String}}
+           :Trip {:fields {:location {:type String}
                            :start {:type Int}
-                           :end {:type Int}}
+                           :end {:type Int}}}
            :User {:description "all infos about the user of the platform"
                   :fields {:username {:type String
                                       :description "unique identifier because there will be public searchable users"}

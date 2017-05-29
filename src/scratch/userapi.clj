@@ -4,8 +4,7 @@
 
 
 (defn resolve-users [context args _value]
-  (json/read-str (:body (getCall "http://private-339a33-user176.apiary-mock.com/users"))))
-
+    (json/read-str (:body (getCall "http://private-339a33-user176.apiary-mock.com/users")) :key-fn keyword))
 
 (defn resolve-user []
   (list))
